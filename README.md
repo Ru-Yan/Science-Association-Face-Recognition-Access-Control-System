@@ -41,6 +41,7 @@ This system takes the access control system of colleges and universities as the 
 
 ####  Basic Environment Configuration
 
+||| 
 |--|--|
 |operating system|SylixOS| 
 |camera|Local camera or Logitech usb2.0|
