@@ -1,0 +1,42 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/back.png</file>
+        <file>icon/background.png</file>
+        <file>icon/delete0.png</file>
+        <file>icon/delete1.png</file>
+        <file>icon/down.png</file>
+        <file>icon/face.png</file>
+        <file>icon/find0.png</file>
+        <file>icon/find1.png</file>
+        <file>icon/kaoqin0.png</file>
+        <file>icon/kaoqin1.png</file>
+        <file>icon/notice0.png</file>
+        <file>icon/notice1.png</file>
+        <file>icon/school.png</file>
+        <file>icon/send0.png</file>
+        <file>icon/send1.png</file>
+        <file>icon/shezhi0.png</file>
+        <file>icon/shezhi1.png</file>
+        <file>icon/stu0.png</file>
+        <file>icon/stu1.png</file>
+        <file>icon/teacher0.png</file>
+        <file>icon/teacher1.png</file>
+        <file>icon/refresh.png</file>
+        <file>icon/select0.png</file>
+        <file>icon/select1.png</file>
+        <file>icon/face0.png</file>
+        <file>icon/back1.png</file>
+        <file>icon/cricle0.png</file>
+        <file>icon/stuface.png</file>
+        <file>icon/huodong0.png</file>
+        <file>icon/huodong1.png</file>
+        <file>icon/notice_background.png</file>
+        <file>icon/stu3.png</file>
+        <file>icon/teacher3.png</file>
+        <file>icon/notice_background0.png</file>
+        <file>icon/notice_background1.png</file>
+        <file>icon/send2.png</file>
+        <file>icon/face1.png</file>
+        <file>icon/face3.png</file>
+    </qresource>
+</RCC>

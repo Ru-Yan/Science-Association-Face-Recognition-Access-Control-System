@@ -1,0 +1,216 @@
+﻿@{
+    ViewData["Title"] = "活动列表";
+    Layout = "_DashboardLayout";
+}
+@model Facecore.Models.acti
+
+@section StuAddInfoHead {
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
+<link rel="stylesheet" href="/css/fonts/linecons/css/linecons.css">
+<link rel="stylesheet" href="/css/fonts/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="/css/xenon-core.css">
+<link rel="stylesheet" href="/css/xenon-forms.css">
+<link rel="stylesheet" href="/css/xenon-components.css">
+<link rel="stylesheet" href="/css/xenon-skins.css">
+<link rel="stylesheet" href="/css/custom.css">
+<script src="/js/jquery-1.11.1.min.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+
+    });
+</script>
+
+}
+<div class="main-content" style="">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">活动管理</h3>
+            <a href="#" onclick="addActi()" class=" panel-options btn btn-info btn-sm btn-icon icon-left">
+                添加新活动
+            </a>
+        </div>
+        <div class="panel-body">
+
+            <script type="text/javascript">
+                jQuery(document).ready(function($)
+                {
+                    
+                    $("#example-2").dataTable();
+                });
+
+                function addActi() {
+                    $(":input","#infomodal")
+                        .not(":button",":reset","hidden","submit")
+                        .val("")
+                        .removeAttr("checked")
+                        .removeAttr("selected");
+                    $('#addEditModel').modal('show');
+                }
+
+                function submit() {
+                    $("#infomodal").submit();
+                }
+            </script>
+
+
+            <table class="table table-bordered table-striped" id="example-2">
+                <colgroup>
+                    <col style="width:17%">
+                    <col style="width:30%">
+                    <col style="width:5%">
+                    <col style="width:10%">
+                    <col style="width:10%">
+                    <col style="width:13%">
+                    <col style="width:8%">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>活动标题</th>
+                    <th>内容</th>
+                    <th>状态</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                    <th>发布人</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody class="middle-align">
+
+                @foreach (acti item in ViewBag.actis)
+                {
+                    <tr>
+
+                        <td>@item.acti_head</td>
+                        <td>@item.acti_content</td>
+                        <td>@item.acti_state</td>
+                        <td>@item.start_time</td>
+                        <td>@item.end_time</td>
+                        <td>@item.acti_peo</td>
+                        <td>
+                            <a href="@Url.Action("deleteActi",new {id = item.Id})" class="btn btn-danger btn-sm btn-icon icon-left">
+                                删除
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+@section StuAddInfoFooter{
+    <div class="modal fade" id="addEditModel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">活动详情</h4>
+            </div>
+            <form asp-action="addActi" enctype="application/x-www-form-urlencoded" id="infomodal">
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">活动名称</label>
+
+                                <input type="text" class="form-control" name="acti_head" placeholder="请填写活动名">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="field-2" class="control-label">发布人</label>
+
+                                <input type="text" class="form-control" name="acti_peo" placeholder="请填写发布人">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="field-4" class="control-label">状态</label>
+
+                                <input type="text" class="form-control" name="acti_state" placeholder="未开始/进行中/已结束">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="field-5" class="control-label">开始时间</label>
+
+                                <input type="text" class="form-control" name="start_time" placeholder="YYYY-MM-DD">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="field-6" class="control-label">结束时间</label>
+
+                                <input type="text" class="form-control" name="end_time" placeholder="YYYY-MM-DD">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group no-margin">
+                                <label for="field-7" class="control-label">活动描述</label>
+
+                                <textarea class="form-control autogrow" name="acti_content" placeholder="请描述本活动"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                <button type="button" onclick="submit()" class="btn btn-info">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Imported styles on this page -->
+<link rel="stylesheet" href="/js/datatables/dataTables.bootstrap.css">
+
+<!-- Bottom Scripts -->
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/TweenMax.min.js"></script>
+<script src="/js/resizeable.js"></script>
+<script src="/js/joinable.js"></script>
+<script src="/js/xenon-api.js"></script>
+<script src="/js/xenon-toggles.js"></script>
+<script src="/js/datatables/js/jquery.dataTables.min.js"></script>
+
+
+<!-- Imported scripts on this page -->
+<script src="/js/datatables/dataTables.bootstrap.js"></script>
+<script src="/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
+<script src="/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
+
+
+<!-- JavaScripts initializations and stuff -->
+<script src="/js/xenon-custom.js"></script>
+}
